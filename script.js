@@ -1,14 +1,8 @@
-/* =========================================================
-   DI-TEXTBOOK RESOURCE PORTAL
-   Main JavaScript
-   Mabalacat City College - BEED
-   ========================================================= */
-
 document.addEventListener("DOMContentLoaded", function () {
 
-    /* =====================================================
+    /* =========================
        MOBILE NAVIGATION
-       ===================================================== */
+       ========================= */
 
     const menuToggle = document.querySelector(".menu-toggle");
     const navMenu = document.querySelector(".nav-menu");
@@ -18,30 +12,26 @@ document.addEventListener("DOMContentLoaded", function () {
         menuToggle.addEventListener("click", function () {
 
             navMenu.classList.toggle("active");
-            menuToggle.classList.toggle("active");
 
-            const isOpen =
-                navMenu.classList.contains("active");
+            const isOpen = navMenu.classList.contains("active");
 
             menuToggle.setAttribute(
                 "aria-expanded",
-                isOpen
+                isOpen ? "true" : "false"
             );
 
         });
 
 
-        // Close mobile menu when a link is clicked
+        // Close menu when navigation link is clicked
 
-        const navLinks =
-            navMenu.querySelectorAll("a");
+        const navLinks = navMenu.querySelectorAll("a");
 
         navLinks.forEach(function (link) {
 
             link.addEventListener("click", function () {
 
                 navMenu.classList.remove("active");
-                menuToggle.classList.remove("active");
 
                 menuToggle.setAttribute(
                     "aria-expanded",
@@ -55,10 +45,168 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
+    /* =========================
+       SEARCH
+       ========================= */
 
-    /* =====================================================
-       ACTIVE NAVIGATION LINK
-       ===================================================== */
+    const searchInput = document.getElementById("searchInput");
+    const resourceCards = document.querySelectorAll(".resource-card");
+    const noResults = document.getElementById("noResults");
+
+    if (searchInput) {
+
+        searchInput.addEventListener("input", function () {
+
+            const searchTerm =
+                searchInput.value.toLowerCase().trim();
+
+            let visibleCount = 0;
+
+            resourceCards.forEach(function (card) {
+
+                const cardText =
+                    card.textContent.toLowerCase();
+
+                if (cardText.includes(searchTerm)) {
+
+                    card.style.display = "";
+
+                    visibleCount++;
+
+                } else {
+
+                    card.style.display = "none";
+
+                }
+
+            });
+
+
+            if (noResults) {
+
+                noResults.style.display =
+                    visibleCount === 0 ? "block" : "none";
+
+            }
+
+        });
+
+    }
+
+
+    /* =========================
+       CATEGORY FILTER
+       ========================= */
+
+    const filterButtons =
+        document.querySelectorAll(".filter-btn");
+
+    filterButtons.forEach(function (button) {
+
+        button.addEventListener("click", function () {
+
+            const category =
+                button.getAttribute("data-category");
+
+
+            // Remove active state from all buttons
+
+            filterButtons.forEach(function (btn) {
+
+                btn.classList.remove("active");
+
+            });
+
+
+            // Add active state to selected button
+
+            button.classList.add("active");
+
+
+            // Clear search
+
+            if (searchInput) {
+
+                searchInput.value = "";
+
+            }
+
+
+            let visibleCount = 0;
+
+
+            resourceCards.forEach(function (card) {
+
+                const cardCategory =
+                    card.getAttribute("data-category");
+
+
+                if (
+                    category === "all" ||
+                    cardCategory === category
+                ) {
+
+                    card.style.display = "";
+
+                    visibleCount++;
+
+                } else {
+
+                    card.style.display = "none";
+
+                }
+
+            });
+
+
+            if (noResults) {
+
+                noResults.style.display =
+                    visibleCount === 0 ? "block" : "none";
+
+            }
+
+        });
+
+    });
+
+
+    /* =========================
+       SMOOTH SCROLLING
+       ========================= */
+
+    const internalLinks =
+        document.querySelectorAll('a[href^="#"]');
+
+    internalLinks.forEach(function (link) {
+
+        link.addEventListener("click", function (event) {
+
+            const targetId =
+                link.getAttribute("href");
+
+            const target =
+                document.querySelector(targetId);
+
+            if (target) {
+
+                event.preventDefault();
+
+                target.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+            }
+
+        });
+
+    });
+
+
+    /* =========================
+       ACTIVE NAVIGATION
+       ========================= */
 
     const sections =
         document.querySelectorAll("main section[id]");
@@ -66,25 +214,19 @@ document.addEventListener("DOMContentLoaded", function () {
     const navigationLinks =
         document.querySelectorAll(".nav-menu a");
 
+
     function updateActiveNavigation() {
 
-        let currentSection = "";
+        let currentSection = "home";
 
         sections.forEach(function (section) {
 
             const sectionTop =
-                section.offsetTop - 120;
+                section.offsetTop - 150;
 
-            const sectionHeight =
-                section.offsetHeight;
+            if (window.scrollY >= sectionTop) {
 
-            if (
-                window.scrollY >= sectionTop &&
-                window.scrollY < sectionTop + sectionHeight
-            ) {
-
-                currentSection =
-                    section.getAttribute("id");
+                currentSection = section.id;
 
             }
 
@@ -95,10 +237,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
             link.classList.remove("active");
 
-            const target =
+            const linkTarget =
                 link.getAttribute("href");
 
-            if (target === "#" + currentSection) {
+            if (linkTarget === "#" + currentSection) {
 
                 link.classList.add("active");
 
@@ -114,98 +256,130 @@ document.addEventListener("DOMContentLoaded", function () {
         updateActiveNavigation
     );
 
-    updateActiveNavigation();
+
+    /* =========================
+       BACK TO TOP
+       ========================= */
+
+    const backToTop =
+        document.getElementById("backToTop");
 
 
+    if (backToTop) {
 
-    /* =====================================================
-       SEARCH RESOURCES
-       ===================================================== */
+        window.addEventListener("scroll", function () {
 
-    const searchInput =
-        document.querySelector("#searchInput");
+            if (window.scrollY > 450) {
 
-    const resourceCards =
-        document.querySelectorAll(".resource-card");
+                backToTop.classList.add("show");
 
-    const noResults =
-        document.querySelector("#noResults");
+            } else {
 
-
-    if (searchInput && resourceCards.length > 0) {
-
-        searchInput.addEventListener(
-            "input",
-            function () {
-
-                const searchTerm =
-                    searchInput.value
-                        .toLowerCase()
-                        .trim();
-
-                let visibleCards = 0;
-
-
-                resourceCards.forEach(function (card) {
-
-                    const cardText =
-                        card.textContent
-                            .toLowerCase();
-
-                    if (
-                        cardText.includes(searchTerm)
-                    ) {
-
-                        card.style.display = "";
-                        visibleCards++;
-
-                    } else {
-
-                        card.style.display = "none";
-
-                    }
-
-                });
-
-
-                if (noResults) {
-
-                    if (visibleCards === 0) {
-
-                        noResults.style.display =
-                            "block";
-
-                    } else {
-
-                        noResults.style.display =
-                            "none";
-
-                    }
-
-                }
+                backToTop.classList.remove("show");
 
             }
-        );
+
+        });
+
+
+        backToTop.addEventListener("click", function () {
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        });
 
     }
 
 
+    /* =========================
+       CURRENT YEAR
+       ========================= */
 
-    /* =====================================================
-       RESOURCE CATEGORY FILTER
-       ===================================================== */
-
-    const filterButtons =
-        document.querySelectorAll(".filter-btn");
+    const currentYear =
+        document.querySelector(".current-year");
 
 
-    if (
-        filterButtons.length > 0 &&
-        resourceCards.length > 0
-    ) {
+    if (currentYear) {
 
-        filterButtons.forEach(function (button) {
+        currentYear.textContent =
+            new Date().getFullYear();
 
-            button.addEventListener(
-                "click",
-                function
+    }
+
+
+    /* =========================
+       CLOSE MENU WHEN CLICKING
+       OUTSIDE
+       ========================= */
+
+    document.addEventListener("click", function (event) {
+
+        if (!menuToggle || !navMenu) {
+            return;
+        }
+
+
+        const clickedInsideMenu =
+            navMenu.contains(event.target);
+
+        const clickedToggle =
+            menuToggle.contains(event.target);
+
+
+        if (
+            !clickedInsideMenu &&
+            !clickedToggle
+        ) {
+
+            navMenu.classList.remove("active");
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+        }
+
+    });
+
+
+    /* =========================
+       ESCAPE KEY
+       ========================= */
+
+    document.addEventListener("keydown", function (event) {
+
+        if (event.key === "Escape") {
+
+            if (navMenu) {
+
+                navMenu.classList.remove("active");
+
+            }
+
+            if (menuToggle) {
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+            }
+
+        }
+
+    });
+
+
+    /* =========================
+       CONSOLE CONFIRMATION
+       ========================= */
+
+    console.log(
+        "DI-Textbook Resource Portal loaded successfully."
+    );
+
+});
