@@ -1,101 +1,71 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="description"
+        content="DI-Textbook Resource Portal featuring differentiated instruction resources and research from the Bachelor of Elementary Education program.">
 
-    <meta
-        name="description"
-        content="DI-Textbook Resource Portal - A research-based resource portal documenting the representation of Differentiated Instruction in selected teacher education textbooks at Mabalacat City College."
-    >
+    <meta name="author" content="Bachelor of Elementary Education">
 
-    <meta
-        name="author"
-        content="Bachelor of Elementary Education - Mabalacat City College"
-    >
+    <title>DI-Textbook Resource Portal | Mabalacat City College</title>
 
-    <title>
-        DI-Textbook Resource Portal | Mabalacat City College
-    </title>
-
-    <!-- Main Stylesheet -->
     <link rel="stylesheet" href="style.css">
 </head>
 
-
 <body>
 
-
-    <!-- =====================================================
-         HEADER / NAVIGATION
-         ===================================================== -->
+    <!-- =========================
+         HEADER
+         ========================= -->
 
     <header class="site-header">
 
-        <div class="header-inner">
+        <div class="container header-inner">
 
-            <!-- LOGOS + BRAND -->
-            <a
-                href="#home"
-                class="logo-area"
-                aria-label="DI-Textbook Resource Portal Home"
-            >
+            <div class="logo-area">
 
-                <!-- MCC LOGO -->
                 <img
                     src="images/mcc-logo.png"
                     alt="Mabalacat City College Logo"
+                    class="mcc-logo"
                 >
 
-                <!-- ITE LOGO -->
+                <div class="logo-divider"></div>
+
                 <img
                     src="images/ite-logo.png"
                     alt="Institute of Teacher Education Logo"
+                    class="ite-logo"
                 >
 
-                <div class="logo-text">
-
-                    <span class="logo-title">
+                <div class="brand-text">
+                    <div class="brand-title">
                         DI-Textbook Resource Portal
-                    </span>
+                    </div>
 
-                    <span class="logo-subtitle">
+                    <div class="brand-subtitle">
                         Institute of Teacher Education
-                    </span>
-
+                    </div>
                 </div>
 
-            </a>
-
-
-            <!-- MOBILE MENU BUTTON -->
+            </div>
 
             <button
                 class="menu-toggle"
-                type="button"
                 aria-label="Open navigation menu"
                 aria-expanded="false"
             >
                 ☰
             </button>
 
-
-            <!-- NAVIGATION -->
-
-            <nav aria-label="Main navigation">
-
+            <nav>
                 <ul class="nav-menu">
 
                     <li>
-                        <a
-                            href="#home"
-                            class="active"
-                        >
+                        <a href="#home" class="active">
                             Home
                         </a>
                     </li>
@@ -107,7 +77,7 @@
                     </li>
 
                     <li>
-                        <a href="#categories">
+                        <a href="#framework">
                             DI Framework
                         </a>
                     </li>
@@ -125,7 +95,6 @@
                     </li>
 
                 </ul>
-
             </nav>
 
         </div>
@@ -133,22 +102,13 @@
     </header>
 
 
-
-    <!-- =====================================================
-         MAIN CONTENT
-         ===================================================== -->
-
     <main>
 
+        <!-- =========================
+             HOME / HERO
+             ========================= -->
 
-        <!-- =================================================
-             HERO / HOME
-             ================================================= -->
-
-        <section
-            id="home"
-            class="hero"
-        >
+        <section class="hero" id="home">
 
             <div class="container">
 
@@ -158,28 +118,18 @@
                         Bachelor of Elementary Education
                     </span>
 
-
                     <h1>
-
-                        Differentiated
-                        <span>Instruction</span>
-                        in BEED Textbooks
-
+                        Differentiated Instruction
+                        <span>in BEED Textbooks</span>
                     </h1>
 
-
-                    <p>
-
-                        A research-based resource portal documenting
-                        and organizing the representation of
-                        Differentiated Instruction strategies in
-                        selected teacher education textbooks used
-                        at Mabalacat City College.
-
+                    <p class="hero-description">
+                        A research-based resource portal exploring how
+                        Differentiated Instruction is represented in selected
+                        textbooks used in Elementary Teacher Education.
                     </p>
 
-
-                    <div class="hero-actions">
+                    <div class="hero-buttons">
 
                         <a
                             href="#resources"
@@ -204,52 +154,41 @@
         </section>
 
 
-
-        <!-- =================================================
+        <!-- =========================
              RESOURCES
-             ================================================= -->
+             ========================= -->
 
         <section
+            class="resources-section"
             id="resources"
-            class="section"
         >
 
             <div class="container">
 
+                <div class="section-heading">
 
-                <!-- SECTION HEADER -->
-
-                <div class="section-header">
-
-                    <div class="section-label">
+                    <span class="section-label">
                         Resource Library
-                    </div>
+                    </span>
 
-                    <h2 class="section-title">
+                    <h2>
                         Differentiated Instruction Resources
                     </h2>
 
-                    <p class="section-description">
-
-                        Explore the instructional concepts and
-                        differentiated strategies identified as
-                        relevant to the content analysis of selected
-                        teacher education textbooks.
-
+                    <p>
+                        Explore key concepts, strategies, and dimensions
+                        of Differentiated Instruction.
                     </p>
 
                 </div>
 
 
-
-                <!-- SEARCH -->
-
-                <div class="resource-toolbar">
+                <div class="resource-tools">
 
                     <div class="search-box">
 
                         <input
-                            type="search"
+                            type="text"
                             id="searchInput"
                             placeholder="Search resources..."
                             aria-label="Search resources"
@@ -257,78 +196,750 @@
 
                     </div>
 
-                </div>
 
+                    <div class="filter-buttons">
 
+                        <button
+                            class="filter-btn active"
+                            data-category="all"
+                        >
+                            All
+                        </button>
 
-                <!-- FILTER BUTTONS -->
+                        <button
+                            class="filter-btn"
+                            data-category="content"
+                        >
+                            Content
+                        </button>
 
-                <div class="filter-buttons">
+                        <button
+                            class="filter-btn"
+                            data-category="process"
+                        >
+                            Process
+                        </button>
 
-                    <button
-                        type="button"
-                        class="filter-btn active"
-                        data-category="all"
-                    >
-                        All
-                    </button>
+                        <button
+                            class="filter-btn"
+                            data-category="product"
+                        >
+                            Product
+                        </button>
 
+                        <button
+                            class="filter-btn"
+                            data-category="environment"
+                        >
+                            Learning Environment
+                        </button>
 
-                    <button
-                        type="button"
-                        class="filter-btn"
-                        data-category="content"
-                    >
-                        Content
-                    </button>
+                        <button
+                            class="filter-btn"
+                            data-category="strategy"
+                        >
+                            Strategies
+                        </button>
 
-
-                    <button
-                        type="button"
-                        class="filter-btn"
-                        data-category="process"
-                    >
-                        Process
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="filter-btn"
-                        data-category="product"
-                    >
-                        Product
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="filter-btn"
-                        data-category="environment"
-                    >
-                        Learning Environment
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="filter-btn"
-                        data-category="strategy"
-                    >
-                        Strategies
-                    </button>
+                    </div>
 
                 </div>
 
-
-
-                <!-- RESOURCE CARDS -->
 
                 <div class="resource-grid">
 
 
-                    <!-- CARD 1 -->
+                    <article
+                        class="resource-card"
+                        data-category="content"
+                    >
+
+                        <div class="resource-icon">
+                            C
+                        </div>
+
+                        <h3>
+                            Differentiated Content
+                        </h3>
+
+                        <p>
+                            Ways teachers adjust what learners study
+                            according to readiness, interests, and learning needs.
+                        </p>
+
+                    </article>
+
 
                     <article
                         class="resource-card"
-                        data-category
+                        data-category="process"
+                    >
+
+                        <div class="resource-icon">
+                            P
+                        </div>
+
+                        <h3>
+                            Differentiated Process
+                        </h3>
+
+                        <p>
+                            Different learning activities and approaches
+                            that help students understand content.
+                        </p>
+
+                    </article>
+
+
+                    <article
+                        class="resource-card"
+                        data-category="product"
+                    >
+
+                        <div class="resource-icon">
+                            P
+                        </div>
+
+                        <h3>
+                            Differentiated Product
+                        </h3>
+
+                        <p>
+                            Different ways learners demonstrate what they
+                            know, understand, and can do.
+                        </p>
+
+                    </article>
+
+
+                    <article
+                        class="resource-card"
+                        data-category="environment"
+                    >
+
+                        <div class="resource-icon">
+                            E
+                        </div>
+
+                        <h3>
+                            Learning Environment
+                        </h3>
+
+                        <p>
+                            Classroom conditions and learning spaces
+                            that support diverse learners.
+                        </p>
+
+                    </article>
+
+
+                    <article
+                        class="resource-card"
+                        data-category="strategy"
+                    >
+
+                        <div class="resource-icon">
+                            F
+                        </div>
+
+                        <h3>
+                            Flexible Grouping
+                        </h3>
+
+                        <p>
+                            Organizing learners into flexible groups
+                            based on learning needs and instructional goals.
+                        </p>
+
+                    </article>
+
+
+                    <article
+                        class="resource-card"
+                        data-category="strategy"
+                    >
+
+                        <div class="resource-icon">
+                            R
+                        </div>
+
+                        <h3>
+                            Learner Readiness
+                        </h3>
+
+                        <p>
+                            Adjusting instruction according to a learner's
+                            current knowledge, skills, and understanding.
+                        </p>
+
+                    </article>
+
+
+                    <article
+                        class="resource-card"
+                        data-category="strategy"
+                    >
+
+                        <div class="resource-icon">
+                            I
+                        </div>
+
+                        <h3>
+                            Learner Interests
+                        </h3>
+
+                        <p>
+                            Connecting learning experiences with students'
+                            interests and meaningful contexts.
+                        </p>
+
+                    </article>
+
+
+                    <article
+                        class="resource-card"
+                        data-category="strategy"
+                    >
+
+                        <div class="resource-icon">
+                            S
+                        </div>
+
+                        <h3>
+                            Scaffolding
+                        </h3>
+
+                        <p>
+                            Providing temporary support that helps learners
+                            gradually become more independent.
+                        </p>
+
+                    </article>
+
+
+                    <article
+                        class="resource-card"
+                        data-category="strategy"
+                    >
+
+                        <div class="resource-icon">
+                            A
+                        </div>
+
+                        <h3>
+                            Differentiated Assessment
+                        </h3>
+
+                        <p>
+                            Using appropriate assessment approaches to
+                            recognize different learner needs and progress.
+                        </p>
+
+                    </article>
+
+                </div>
+
+
+                <div
+                    class="no-results"
+                    id="noResults"
+                >
+                    No resources found.
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             DI FRAMEWORK
+             ========================= -->
+
+        <section
+            class="framework-section"
+            id="framework"
+        >
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span class="section-label">
+                        DI Framework
+                    </span>
+
+                    <h2>
+                        Four Dimensions of Differentiation
+                    </h2>
+
+                    <p>
+                        The content analysis examines how Differentiated
+                        Instruction appears across four major dimensions.
+                    </p>
+
+                </div>
+
+
+                <div class="framework-grid">
+
+
+                    <article class="framework-card">
+
+                        <div class="framework-number">
+                            01
+                        </div>
+
+                        <h3>
+                            Content
+                        </h3>
+
+                        <p>
+                            What students learn and the knowledge,
+                            skills, and concepts presented to them.
+                        </p>
+
+                    </article>
+
+
+                    <article class="framework-card">
+
+                        <div class="framework-number">
+                            02
+                        </div>
+
+                        <h3>
+                            Process
+                        </h3>
+
+                        <p>
+                            How learners engage with and make sense
+                            of the content.
+                        </p>
+
+                    </article>
+
+
+                    <article class="framework-card">
+
+                        <div class="framework-number">
+                            03
+                        </div>
+
+                        <h3>
+                            Product
+                        </h3>
+
+                        <p>
+                            How learners demonstrate their learning
+                            and understanding.
+                        </p>
+
+                    </article>
+
+
+                    <article class="framework-card">
+
+                        <div class="framework-number">
+                            04
+                        </div>
+
+                        <h3>
+                            Learning Environment
+                        </h3>
+
+                        <p>
+                            The physical, social, and instructional
+                            conditions surrounding learning.
+                        </p>
+
+                    </article>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             RESEARCH
+             ========================= -->
+
+        <section
+            class="research-section"
+            id="research"
+        >
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span class="section-label">
+                        Research
+                    </span>
+
+                    <h2>
+                        About the Study
+                    </h2>
+
+                </div>
+
+
+                <div class="research-grid">
+
+
+                    <div class="research-text">
+
+                        <p>
+                            This study examines the representation of
+                            Differentiated Instruction in selected textbooks
+                            used in the Bachelor of Elementary Education program.
+                        </p>
+
+                        <p>
+                            Through content analysis, the study identifies
+                            instructional strategies and determines how they
+                            are represented across the four dimensions of
+                            Differentiated Instruction.
+                        </p>
+
+
+                        <ul class="research-list">
+
+                            <li>
+                                Identify Differentiated Instruction strategies
+                                represented in selected textbooks.
+                            </li>
+
+                            <li>
+                                Categorize identified strategies according
+                                to Content, Process, Product, and Learning Environment.
+                            </li>
+
+                            <li>
+                                Examine similarities and differences
+                                across the selected textbooks.
+                            </li>
+
+                            <li>
+                                Identify areas that are frequently represented,
+                                limited, or absent.
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+
+                    <div class="research-process">
+
+                        <h3>
+                            Research Process
+                        </h3>
+
+
+                        <div class="process-step">
+
+                            <div class="process-number">
+                                1
+                            </div>
+
+                            <p>
+                                Select eligible BEED textbooks.
+                            </p>
+
+                        </div>
+
+
+                        <div class="process-step">
+
+                            <div class="process-number">
+                                2
+                            </div>
+
+                            <p>
+                                Review and examine textbook content.
+                            </p>
+
+                        </div>
+
+
+                        <div class="process-step">
+
+                            <div class="process-number">
+                                3
+                            </div>
+
+                            <p>
+                                Identify and code DI strategies.
+                            </p>
+
+                        </div>
+
+
+                        <div class="process-step">
+
+                            <div class="process-number">
+                                4
+                            </div>
+
+                            <p>
+                                Categorize strategies according to
+                                the DI framework.
+                            </p>
+
+                        </div>
+
+
+                        <div class="process-step">
+
+                            <div class="process-number">
+                                5
+                            </div>
+
+                            <p>
+                                Compare and interpret findings.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ABOUT
+             ========================= -->
+
+        <section
+            class="about-section"
+            id="about"
+        >
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span class="section-label">
+                        About the Portal
+                    </span>
+
+                    <h2>
+                        A Resource for Future Educators
+                    </h2>
+
+                    <p>
+                        This portal presents research-based information
+                        about Differentiated Instruction for teacher education
+                        students and future elementary educators.
+                    </p>
+
+                </div>
+
+
+                <div class="about-grid">
+
+
+                    <article class="about-card">
+
+                        <h3>
+                            Purpose
+                        </h3>
+
+                        <p>
+                            To provide an accessible resource for understanding
+                            how Differentiated Instruction is represented in
+                            BEED textbooks.
+                        </p>
+
+                    </article>
+
+
+                    <article class="about-card">
+
+                        <h3>
+                            Audience
+                        </h3>
+
+                        <p>
+                            Designed primarily for BEED students, teacher
+                            educators, researchers, and future elementary teachers.
+                        </p>
+
+                    </article>
+
+
+                    <article class="about-card">
+
+                        <h3>
+                            Approach
+                        </h3>
+
+                        <p>
+                            The portal organizes research findings using a
+                            clear, systematic, and educator-friendly structure.
+                        </p>
+
+                    </article>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             IPO FRAMEWORK
+             ========================= -->
+
+        <section class="ipo-section">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span class="section-label">
+                        Research Framework
+                    </span>
+
+                    <h2>
+                        Input – Process – Output
+                    </h2>
+
+                </div>
+
+
+                <div class="ipo-grid">
+
+
+                    <article class="ipo-card">
+
+                        <h3>
+                            Input
+                        </h3>
+
+                        <p>
+                            Selected BEED textbooks and relevant
+                            instructional content.
+                        </p>
+
+                    </article>
+
+
+                    <article class="ipo-card">
+
+                        <h3>
+                            Process
+                        </h3>
+
+                        <p>
+                            Systematic content analysis, coding,
+                            categorization, and comparison.
+                        </p>
+
+                    </article>
+
+
+                    <article class="ipo-card">
+
+                        <h3>
+                            Output
+                        </h3>
+
+                        <p>
+                            Findings on the representation of
+                            Differentiated Instruction.
+                        </p>
+
+                    </article>
+
+
+                    <article class="ipo-card">
+
+                        <h3>
+                            Implications
+                        </h3>
+
+                        <p>
+                            Information that may support textbook use,
+                            teacher preparation, and future research.
+                        </p>
+
+                    </article>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+         ========================= -->
+
+    <footer class="site-footer">
+
+        <div class="container footer-inner">
+
+            <div>
+
+                <div class="footer-title">
+                    DI-Textbook Resource Portal
+                </div>
+
+                <div class="footer-text">
+                    Bachelor of Elementary Education
+                </div>
+
+            </div>
+
+
+            <div class="footer-right">
+
+                <div>
+                    Mabalacat City College
+                </div>
+
+                <div>
+                    © <span class="current-year"></span>
+                    All rights reserved.
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- BACK TO TOP -->
+
+    <button
+        class="back-to-top"
+        id="backToTop"
+        aria-label="Back to top"
+    >
+        ↑
+    </button>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
